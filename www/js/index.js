@@ -71,10 +71,40 @@ var app = {
 						//alert("Device id: " + device.uuid);
 						//alert("Device version: " + device.version);
 						//alert("Device os: " + device.platform );
+		var regID;		
+
+		var push = PushNotification.init({
+            "android": {
+                "senderID": "741175631277"
+            },
+            "ios": {}, 
+            "windows": {} 
+        });
+        
+        push.on('registration', function(data) {
+            console.log("registration event");
+           // document.getElementById("regId").innerHTML = data.registrationId;
+			//alert(data.registrationId);
+			regID = data.registrationId;
+			//alert("length"+ regID.length);
+            console.log(JSON.stringify(data));
+        });
+
+        push.on('notification', function(data) {
+        	console.log("notification event");
+            console.log(JSON.stringify(data));
+            //alert(data.message);
+        });
+
+        push.on('error', function(e) {
+            console.log("push error");
+        });
+						
+						
 		
-		var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+device.uuid+"&device_version="+device.version+"&device_os="+device.platform;	
+		var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+device.uuid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;	
 		//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+device.uuid+"&device_version="+device.version+"&device_os="+device.platform;//+"#no-back-button";	
-		//alert("URL: " + baseUrl);
+		alert("URL: " + baseUrl);
 		//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
 		var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 		var img = document.createElement("img");
