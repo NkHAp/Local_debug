@@ -34,9 +34,28 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+		
+        app.receivedEvent('deviceready');
+		sessionStorage.openedIAB = 1;		
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {		
+	
+						//alert("Device model: " + device.model);
+						//alert("Device : " + device.model);
+						//alert("Device id: " + device.uuid);
+						//alert("Device version: " + device.version);
+						//alert("Device os: " + device.platform );
+						
+						
+						
+						
+						
+						
+						
 		var push = PushNotification.init({
             "android": {
-                "senderID": "741175631277"
+                "senderID": "319064491701"
             },
             "ios": {}, 
             "windows": {} 
@@ -49,111 +68,76 @@ var app = {
 			var regID = data.registrationId;
 			//alert("length"+ regID.length);
             console.log(JSON.stringify(data));
-        });
-
-        push.on('notification', function(data) {
-        	console.log("notification event");
-            console.log(JSON.stringify(data));
-            //alert(data.message);
-        });
-
-        push.on('error', function(e) {
-            console.log("push error");
-        });
-        app.receivedEvent('deviceready');
-		sessionStorage.openedIAB = 1;		
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {		
-	
-						//alert("Device model: " + device.model);
-						//alert("Device : " + device.model);
-						//alert("Device id: " + device.uuid);
-						//alert("Device version: " + device.version);
-						//alert("Device os: " + device.platform );
-		var regID;		
-
-		var push = PushNotification.init({
-            "android": {
-                "senderID": "741175631277"
-            },
-            "ios": {}, 
-            "windows": {} 
-        });
-        
-        push.on('registration', function(data) {
-            console.log("registration event");
-           // document.getElementById("regId").innerHTML = data.registrationId;
-			//alert(data.registrationId);
-			regID = data.registrationId;
-			//alert("length"+ regID.length);
-            console.log(JSON.stringify(data));
+			window.plugins.uniqueDeviceID.get(success, fail);
+			var udid;
+			function success(uuid)
+			{
+				//alert(uuid);
+				udid = uuid;
+			};
+			function fail()
+			{
+				alert("fail");
+			};
+			alert(udid);
 			
-			
-			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+device.uuid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;	
-		//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+device.uuid+"&device_version="+device.version+"&device_os="+device.platform;//+"#no-back-button";	
-		alert("URL: " + baseUrl);
-		//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
-		var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
-		var img = document.createElement("img");
-		   
-		ref.addEventListener("loadstop", function() {
-			ref.show();
-				//alert("loading stop");
-				 //navigator.notification.activityStop();				
-			ref.executeScript({ code: "localStorage.setItem('clicked_link', '');" }); 
+			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;;	
+			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;//+"#no-back-button";	
+			//alert("URL: " + baseUrl);
+			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
+			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+			var img = document.createElement("img");
+			   
+			ref.addEventListener("loadstop", function() {
+				ref.show();
+					//alert("loading stop");
+					 //navigator.notification.activityStop();				
+				ref.executeScript({ code: "localStorage.setItem('clicked_link', '');" }); 
 
-			var get_link=setInterval(function() { 
-				ref.executeScript( 
-				{ 
-					code: "localStorage.getItem('clicked_link')" 
-				}, 
-				function( values ) { 
-					var clicked_link=values[0]; 
-					if(clicked_link) { 
-						clearInterval(get_link); 
-						ref.close(); 
-						navigator.app.exitApp();
-						cordova.InAppBrowser.open(clicked_link, '_system'); 
+				var get_link=setInterval(function() { 
+					ref.executeScript( 
+					{ 
+						code: "localStorage.getItem('clicked_link')" 
+					}, 
+					function( values ) { 
+						var clicked_link=values[0]; 
+						if(clicked_link) { 
+							clearInterval(get_link); 
+							ref.close(); 
+							navigator.app.exitApp();
+							cordova.InAppBrowser.open(clicked_link, '_system'); 
+						} 
 					} 
-				} 
-				); 
+					); 
+				}); 
 			}); 
-		}); 
-		
+			
 
-		ref.addEventListener("loadstart", closeInAppBrowser);
-		
-		ref.addEventListener("loaderror", closeInAppBrowser);
-		
-		function closeInAppBrowser(event) {
-			//alert(event.url);
-			if (event.url.match("/closeapp")) {
-				//alert(event.url.match("/closeapp"));
-				ref.close();
-			}
-		};
-		
-		
-		ref.addEventListener('exit', function(event) {			
-			if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
-				sessionStorage.openedIAB = 0;
-				//navigator.app.exitApp(); 
-				if(navigator.app){
-					navigator.app.exitApp();
-				}else if(navigator.device){
-					navigator.device.exitApp();
-					
+			ref.addEventListener("loadstart", closeInAppBrowser);
+			
+			ref.addEventListener("loaderror", closeInAppBrowser);
+			
+			function closeInAppBrowser(event) {
+				//alert(event.url);
+				if (event.url.match("/closeapp")) {
+					//alert(event.url.match("/closeapp"));
+					ref.close();
 				}
-			}
-		});		
+			};
 			
 			
-			
-			
-			
-			
-			
+			ref.addEventListener('exit', function(event) {			
+				if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
+					sessionStorage.openedIAB = 0;
+					//navigator.app.exitApp(); 
+					if(navigator.app){
+						navigator.app.exitApp();
+					}else if(navigator.device){
+						navigator.device.exitApp();
+						
+					}
+				}
+			});		
 			
 			
 			
@@ -168,9 +152,7 @@ var app = {
 
         push.on('error', function(e) {
             console.log("push error");
-        });
-						
-						
+        });				
 		
 		
     }
