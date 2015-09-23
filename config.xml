@@ -38,9 +38,7 @@
   <gap:plugin name="cordova-plugin-device" source="npm"/>
   <gap:plugin name="phonegap-plugin-push" source="npm" version="1.2.3" />
   <gap:plugin name="hu.dpal.phonegap.plugins.uniquedeviceid" source="plugins.cordova.io" />
-  <gap:config-file platform="android" parent="/manifest/application">
-    <activity android:launchMode="singleTop" />
-</gap:config-file>
+
 
   <icon src="icon.png"/>
   <icon src="res/icon/logo_36.png" gap:platform="android" gap:qualifier="ldpi"/>
