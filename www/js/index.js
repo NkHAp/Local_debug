@@ -74,10 +74,12 @@ var app = {
 			//alert("length"+ regID.length);
             console.log(JSON.stringify(data));
 			
+			var app_version="1.2.0";
+			
 			//alert(udid);
 			
-			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;;	
-			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID;//+"#no-back-button";	
+			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;;	
+			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
 			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
