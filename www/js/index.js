@@ -78,8 +78,8 @@ var app = {
 			
 			//alert(udid);
 			
-			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;;	
-			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
+			//var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;;	
+			var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
 			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
@@ -89,52 +89,26 @@ var app = {
 				ref.show();
 					//alert("loading stop");
 					 //navigator.notification.activityStop();				
-				ref.executeScript({ code: "localStorage.setItem('clicked_link', '');" }); 
-
-				var get_link=setInterval(function() { 
-					ref.executeScript( 
-					{ 
-						code: "localStorage.getItem('clicked_link')" 
-					}, 
-					function( values ) { 
-						var clicked_link=values[0]; 
-						if(clicked_link) { 
-							clearInterval(get_link); 
-							ref.close(); 
-							navigator.app.exitApp();
-							cordova.InAppBrowser.open(clicked_link, '_system'); 
-						} 
-					} 
-					); 
-				}); 
+				
 			}); 
 			
 
-			ref.addEventListener("loadstart", closeInAppBrowser);
-			
-			ref.addEventListener("loaderror", closeInAppBrowser);
-			
-			function closeInAppBrowser(event) {
-				//alert(event.url);
-				if (event.url.match("/closeapp")) {
-					//alert(event.url.match("/closeapp"));
-					ref.close();
-				}
-			};
-			
+			ref.addEventListener("loadstart", function() {
+				//alert("loading start");				 
+				//navigator.notification.activityStart("", "");
+			});
+		
+			ef.addEventListener("loaderror", function() {
+				//alert("loading error");				 
+				//navigator.notification.activityStop();
+			})			
 			
 			ref.addEventListener('exit', function(event) {			
-				if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
-					sessionStorage.openedIAB = 0;
-					//navigator.app.exitApp(); 
-					if(navigator.app){
-						navigator.app.exitApp();
-					}else if(navigator.device){
-						navigator.device.exitApp();
-						
-					}
+			if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
+				sessionStorage.openedIAB = 0;
+				navigator.app.exitApp(); 
 				}
-			});	
+			});
         });
 
         push.on('notification', function(data) {

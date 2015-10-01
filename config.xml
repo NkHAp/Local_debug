@@ -3,7 +3,7 @@
   <description>TakeCare Local</description>
   <author href="http://phonegap.com" email="support@phonegap.com">GuamWEBZ</author>
   <content src="index.html"/>
-  <preference name="phonegap-version" value="3.7.0" />
+  
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
@@ -20,17 +20,13 @@
   <preference name="FadeSplashScreenDuration" value="1"/>
   <preference name="show-splash-screen-spinner" value="false" />      
   
-  <gap:plugin name="cordova-plugin-battery-status" source="npm"/>
   <gap:plugin name="cordova-plugin-camera"  source="npm"/>
   <gap:plugin name="cordova-plugin-media-capture" source="npm"/>
-  <gap:plugin name="cordova-plugin-media" source="npm"/>
   <gap:plugin name="cordova-plugin-console" source="npm"/>
-  <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
   <gap:plugin name="cordova-plugin-device-orientation" source="npm"/>
   <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
   <gap:plugin name="cordova-plugin-file" source="npm"/>
   <gap:plugin name="cordova-plugin-file-transfer" source="npm"/>
-  <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
   <gap:plugin name="cordova-plugin-vibration" source="npm"/>
   <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
