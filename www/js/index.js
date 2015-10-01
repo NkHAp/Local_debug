@@ -93,15 +93,20 @@ var app = {
 			}); 
 			
 
-			ref.addEventListener("loadstart", function() {
-				//alert("loading start");				 
-				//navigator.notification.activityStart("", "");
-			});
+			ref.addEventListener("loadstart", closeInAppBrowser);
 		
-			ef.addEventListener("loaderror", function() {
+			ref.addEventListener("loaderror", function() {
 				//alert("loading error");				 
 				//navigator.notification.activityStop();
-			})			
+			})	
+
+			function closeInAppBrowser(event) {
+						//alert(event.url);
+						if (event.url.match("/closeapp")) {
+							//alert(event.url.match("/closeapp"));
+							ref.close();
+						}
+			};			
 			
 			ref.addEventListener('exit', function(event) {			
 			if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
