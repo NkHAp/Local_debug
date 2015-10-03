@@ -37,6 +37,9 @@ var app = {
 		
         app.receivedEvent('deviceready');
 		sessionStorage.openedIAB = 1;		
+		$( ".ext_link" ).click(function() {
+			alert( "Handler for .click() called." );
+		});
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {		
