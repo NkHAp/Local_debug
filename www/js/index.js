@@ -91,6 +91,7 @@ var app = {
 			ref.addEventListener("loadstop", loadPreviousPage); 
 			
 			function loadPreviousPage(event){
+				ref.show();
 				if(event.url.match("takecareasia")){							
  							alert("back return");
  							history.go(-1);
