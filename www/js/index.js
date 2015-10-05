@@ -88,17 +88,12 @@ var app = {
 			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 			var img = document.createElement("img");
 			   
-			ref.addEventListener("loadstop", loadPreviousPage); 
-			
-			function loadPreviousPage(event){
+			ref.addEventListener("loadstop", function() {
 				ref.show();
-				alert(document.referrer);
-				if(event.url.match("takecareasia")){							
- 							alert("back return");
- 							history.go(-1);
-							navigator.app.backHistory();							
- 				}
-			};
+					//alert("loading stop");
+					 //navigator.notification.activityStop();				
+				
+			}); 
 			
 
 			ref.addEventListener("loadstart", closeInAppBrowser);
@@ -113,11 +108,7 @@ var app = {
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
-						}else if(event.url.match("takecareasia")){							
- 							alert(event.url);
- 							window.open(event.url, '_system', 'location=yes');
-							return false;
- 						}
+						}
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
