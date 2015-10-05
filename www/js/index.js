@@ -92,6 +92,7 @@ var app = {
 			
 			function loadPreviousPage(event){
 				ref.show();
+				alert(document.referrer);
 				if(event.url.match("takecareasia")){							
  							alert("back return");
  							history.go(-1);
