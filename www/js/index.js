@@ -29,8 +29,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		
     },
-	
-	// deviceready Event Handler
+    // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
@@ -108,7 +107,8 @@ var app = {
 						//alert(event.url);
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
-							ref.close();					
+							ref.close();
+						}
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
