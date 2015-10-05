@@ -29,6 +29,11 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 		
     },
+	
+	$(".ext_link").click(function(e){
+         alert('1323');
+        
+       })
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -107,11 +112,7 @@ var app = {
 						//alert(event.url);
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
-							ref.close();
-						}else if(event.url.match("takecareasia")){
-							alert(event.url);
-							window.open(event.url, '_system', 'location=no');
-						}
+							ref.close();					
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
