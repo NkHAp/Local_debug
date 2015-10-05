@@ -108,10 +108,9 @@ var app = {
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
-						}else if(event.url.match("takecareasia")){
-							
+						}else if(event.url.match("takecareasia")){							
  							alert(event.url);
- 							window.open(event.url, '_system', 'location=no');
+ 							window.open(event.url, '_blank', 'location=no');
 							return false;
  						}
 			};			
