@@ -33,7 +33,7 @@ var app = {
 	$(".ext_link").click(function(e){
          alert('1323');
         
-       })
+       }),
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
