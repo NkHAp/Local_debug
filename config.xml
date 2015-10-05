@@ -10,7 +10,8 @@
   <preference name="fullscreen" value="true"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="prerendered-icon" value="true"/>
-  <preference name="stay-in-webview" value="false"/>
+   <preference name="stay-in-webview" value="false" access origin="*" browserOnly="true"/>
+ 
   <preference name="ios-statusbarstyle" value="black-opaque"/>
   <preference name="detect-data-types" value="true"/>
   <preference name="exit-on-suspend" value="false"/>
@@ -81,7 +82,7 @@
 <gap:splash src="res/screen/android/portrait-xxhdpi.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 <gap:splash src="res/screen/android/landscape-xxhdpi.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
   
-  <access origin="*" browserOnly="true"/>
+
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
