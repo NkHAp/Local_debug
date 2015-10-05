@@ -133,7 +133,3 @@ var app = {
     }
 	
 };
-$(".ext_link").click(function(e){
-         alert('1323');
-        
-});
