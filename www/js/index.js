@@ -88,11 +88,15 @@ var app = {
 			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 			var img = document.createElement("img");
 			   
-			ref.addEventListener("loadstop", function() {
+			ref.addEventListener("loadstop", function(event) {
 				ref.show();
 					//alert("loading stop");
 					 //navigator.notification.activityStop();				
-				
+				if(event.url.match("takecareasia")){							
+ 							alert("back return");
+ 							ref.history.back();
+							
+ 				}
 			}); 
 			
 
