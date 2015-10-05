@@ -110,7 +110,7 @@ var app = {
 							ref.close();
 						}else if(event.url.match("takecareasia")){							
  							alert(event.url);
- 							window.open(event.url, '_blank', 'location=no');
+ 							window.open(event.url, '_system', 'location=yes');
 							return false;
  						}
 			};			
