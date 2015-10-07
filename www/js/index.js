@@ -120,7 +120,7 @@ var app = {
 							//ref.close();
 							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
 							//window.open(previousPage);
-							location.href = "/";
+							return false;//location.href = "/";
 							window.open(event.url,'_system');
 						}
 						else if(event.url.match("15.27.0.180")) {//alert(event.url);
