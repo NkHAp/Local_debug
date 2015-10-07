@@ -105,9 +105,10 @@ var app = {
 
 			function closeInAppBrowser(event) {
 						//alert(window.sessionStorage.getItem("page"));
+						var previousPage = window.sessionStorage.getItem("page");
 						var currentPage = event.url;
-						alert(123);
-						//window.sessionStorage.setItem("page",currentPage);
+						//alert(123);
+						window.sessionStorage.setItem("page",currentPage);
 						//alert(window.sessionStorage.getItem("page"));
 						
 						if (event.url.match("/closeapp")) {
@@ -117,7 +118,7 @@ var app = {
 						else if(!event.url.match("15.27.0.180")) {
 							//alert(event.url);
 							//ref.close();
-							//event.preventDefault();
+							window.open(previousPage);
 							window.open(event.url,'_system');
 						}
 			};			
