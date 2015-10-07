@@ -122,7 +122,7 @@ var app = {
 							window.open(previousPage);
 							window.open(event.url,'_system');
 						}
-						else if(event.url.match("15.27.0.180")) {{
+						else if(event.url.match("15.27.0.180")) {
 							//var previousPage = window.sessionStorage.getItem("page");
 							var currentPage = event.url;
 							window.sessionStorage.setItem("page",currentPage);
