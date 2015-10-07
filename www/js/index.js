@@ -115,7 +115,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if(!event.url.match("/external_link/")) {
+						else if(event.url.match("/external_link/")) {
 							url = event.url;
 							url_count = url.indexOf('/external_link/');
 							url=url.substr(url_count+15);
