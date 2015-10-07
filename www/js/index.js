@@ -104,11 +104,11 @@ var app = {
 			})	
 
 			function closeInAppBrowser(event) {
-						//alert(event.url);
-						var previouspage = ref.sessionStorage.getItem("page"):
-						//var currentPage = ref.location.href;
-						//ref.sessionStorage.setItem("page",currentPage);
-						alert(previouspage);
+						var currentPage = event.url;
+						alert(currentPage);
+						window.sessionStorage.setItem("page",currentPage);
+						alert(window.sessionStorage.getItem("page"));
+						
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
@@ -117,7 +117,7 @@ var app = {
 							//alert(event.url);
 							//ref.close();
 							//event.preventDefault();
-							window.open(event.url,'_system');return false;
+							window.open(event.url,'_system');
 						}
 			};			
 			
