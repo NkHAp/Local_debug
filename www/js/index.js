@@ -115,19 +115,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if(!event.url.match("15.27.0.180")) {
-							//alert(window.location.href);
-							//ref.close();
-							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
-							//window.open(previousPage);
-							return false;//location.href = "/";
-							window.open(event.url,'_system');
-						}
-						else if(event.url.match("15.27.0.180")) {//alert(event.url);
-							//var previousPage = window.sessionStorage.getItem("page");
-							var currentPage = event.url;
-							window.sessionStorage.setItem("page",currentPage);
-						}
+						
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
