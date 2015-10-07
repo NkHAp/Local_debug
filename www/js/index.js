@@ -109,6 +109,11 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
+						else if(event.url.match("google.com")) {
+							alert(event.url);
+							ref.close();
+							window.open(event.url,'_system');
+						}
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
