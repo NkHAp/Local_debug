@@ -119,12 +119,13 @@ var app = {
 							url = event.url;
 							url_count = url.indexOf('/external_link/');
 							url=url.substr(url_count+20);
-							//ref.close();
+							ref.close();
 							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
 							//window.open(previousPage);
 							url=url.split('***');
-							alert(url[1]);
+							//alert(url[1]);
 							ref = cordova.InAppBrowser.open(url[1], '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+							ref.show();
 							//window.open(url[1]);//location.href = "/";
 							window.open(url[0],'_system');
 						}
