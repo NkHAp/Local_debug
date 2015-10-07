@@ -106,7 +106,7 @@ var app = {
 			function closeInAppBrowser(event) {
 						//alert(window.sessionStorage.getItem("page"));
 						var currentPage = event.url;
-						alert(currentPage);
+						alert(123);
 						//window.sessionStorage.setItem("page",currentPage);
 						//alert(window.sessionStorage.getItem("page"));
 						
