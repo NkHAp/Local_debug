@@ -80,9 +80,8 @@ var app = {
 			var app_version="1.2.0";
 			
 			//alert(udid);
-			alert(app_version);
-			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;
 			
+			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;;	
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
@@ -110,7 +109,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if(event.url.match("google.com")) {
+						else if(!event.url.match("15.27.0.180")) {
 							alert(event.url);
 							ref.close();
 							window.open(event.url,'_system');
