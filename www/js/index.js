@@ -118,12 +118,12 @@ var app = {
 						else if(!event.url.match("15.27.0.180")) {
 							//alert(event.url);
 							//ref.close();
-							var previousPage = window.sessionStorage.getItem("page");
+							var previousPage = window.sessionStorage.getItem("page");alert(previousPage);
 							window.open(previousPage);
 							window.open(event.url,'_system');
 						}
-						else{
-							var previousPage = window.sessionStorage.getItem("page");
+						else if(event.url.match("15.27.0.180")) {{
+							//var previousPage = window.sessionStorage.getItem("page");
 							var currentPage = event.url;
 							window.sessionStorage.setItem("page",currentPage);
 						}
