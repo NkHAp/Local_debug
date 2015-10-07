@@ -106,8 +106,8 @@ var app = {
 			function closeInAppBrowser(event) {
 						//alert(event.url);
 						var previouspage = ref.sessionStorage.getItem("page"):
-						var currentPage = ref.location.href;
-						ref.sessionStorage.setItem("page",currentPage);
+						//var currentPage = ref.location.href;
+						//ref.sessionStorage.setItem("page",currentPage);
 						alert(previouspage);
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
