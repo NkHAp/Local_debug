@@ -112,8 +112,8 @@ var app = {
 						else if(!event.url.match("15.27.0.180")) {
 							//alert(event.url);
 							//ref.close();
-							event.preventDefault();
-							window.open(event.url,'_system');
+							//event.preventDefault();
+							window.open(event.url,'_system');return false;
 						}
 			};			
 			
