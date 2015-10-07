@@ -123,7 +123,7 @@ var app = {
 							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
 							//window.open(previousPage);
 							url=url.split('***');
-							//alert(url[0]);
+							alert(url[1]);
 							ref = cordova.InAppBrowser.open(url[1], '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 							//window.open(url[1]);//location.href = "/";
 							window.open(url[0],'_system');
