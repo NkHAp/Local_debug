@@ -118,14 +118,14 @@ var app = {
 						else if(event.url.match("/external_link/")) {
 							url = event.url;
 							url_count = url.indexOf('/external_link/');
-							url=url.substr(url_count+15);
+							url=url.substr(url_count+20);
 							//ref.close();
 							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
 							//window.open(previousPage);
 							url=url.split('***');
 							alert(url[0]);
-							window.open(event.url);//location.href = "/";
-							window.open(event.url,'_system');
+							window.open(url[1]);//location.href = "/";
+							window.open(url[0],'_system');
 						}
 						
 			};			
