@@ -116,7 +116,7 @@ var app = {
 							ref.close();
 						}
 						else if(!event.url.match("15.27.0.180")) {
-							//alert(event.url);
+							alert(window.referer);
 							//ref.close();
 							var previousPage = window.sessionStorage.getItem("page");alert(previousPage);
 							window.open(previousPage);
