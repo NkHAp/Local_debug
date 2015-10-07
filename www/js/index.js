@@ -108,7 +108,7 @@ var app = {
 						//var previousPage = window.sessionStorage.getItem("page");
 						//var currentPage = event.url;
 						//alert(123);
-						window.sessionStorage.setItem("page",currentPage);
+						//window.sessionStorage.setItem("page",currentPage);
 						//alert(window.sessionStorage.getItem("page"));
 						
 						if (event.url.match("/closeapp")) {
