@@ -85,7 +85,7 @@ var app = {
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
-			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=yes,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 			var img = document.createElement("img");
 			   
 			ref.addEventListener("loadstop", function() {
@@ -127,11 +127,7 @@ var app = {
 							window.open(event.url);//location.href = "/";
 							window.open(event.url,'_system');
 						}
-						else if(event.url.match("15.27.0.180")) {//alert(event.url);
-							//var previousPage = window.sessionStorage.getItem("page");
-							var currentPage = event.url;
-							window.sessionStorage.setItem("page",currentPage);
-						}
+						
 			};			
 			
 			ref.addEventListener('exit', function(event) {			
