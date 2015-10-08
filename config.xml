@@ -89,6 +89,15 @@
   <allow-intent href="sms:*"/>
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
+  
+    <access origin="tel:*" launch-external="yes"/>
+	<access origin="geo:*" launch-external="yes"/>
+	<access origin="mailto:*" launch-external="yes"/>
+	<access origin="sms:*" launch-external="yes"/>
+	<access origin="market:*" launch-external="yes"/>
+
+
+
   <feature name="App">
     <param name="android-package" value="org.apache.cordova.App" />
 </feature>
