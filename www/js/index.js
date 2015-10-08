@@ -115,21 +115,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if(event.url.match("/external_link/")) {
-							url = event.url;alert(url);
-							url_count = url.indexOf('/external_link/');
-							url=url.substr(url_count+20);
-							//ref.close();
-							//var previousPage = window.sessionStorage.getItem("page");/alert(previousPage);
-							//window.open(previousPage);
-							url=url.split('***');
-							//alert(url[1]);
-							navigator.app.loadUrl(url[1]);
-							//ref = cordova.InAppBrowser.open(url[1], '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
-							ref.show();
-							//window.open(url[1]);//location.href = "/";
-							window.open(url[0],'_system');
-						}
+						
 						
 			};			
 			
