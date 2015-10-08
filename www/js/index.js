@@ -115,7 +115,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						
+						 
 						
 			};			
 			
