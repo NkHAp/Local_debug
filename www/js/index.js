@@ -116,7 +116,7 @@ var app = {
 							ref.close();
 						}
 						else if (event.url.match("takecareasia.com")) {
-							ref = window.open(event.url, "_system",null);
+							iap1 = window.open(event.url, "_system",null);
 							execinsideiap1('history.back();');
 							iap1.addEventListener('loadstart', loadstartcheck);
 							iap1.addEventListener('loaderror', loaderrorcheck);
