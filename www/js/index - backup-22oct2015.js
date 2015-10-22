@@ -115,12 +115,6 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if (event.url.match("takecareasia.com")) {
-							ref = window.open(event.url, "_system",null);
-							execinsideiap1('history.back();');
-							ref.addEventListener('loadstart', loadstartcheck);
-							ref.addEventListener('loaderror', loaderrorcheck);
-						}
 						 
 						
 			};			
