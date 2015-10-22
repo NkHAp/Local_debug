@@ -98,10 +98,11 @@ var app = {
 
 			ref.addEventListener("loadstart", closeInAppBrowser);
 		
-			ref.addEventListener("loaderror", function() {
+			ref.addEventListener("loaderror", loaderrorcheck)
+			function loaderrorcheck() {
 				//alert("loading error");				 
 				//navigator.notification.activityStop();
-			})	
+			}
 
 			function closeInAppBrowser(event) {
 						//alert(window.sessionStorage.getItem("page"));
@@ -115,10 +116,10 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if (event.url.match("takecareasia.com")) {alert(event.url);
+						else if (event.url.match("takecareasia.com")) {
 							iap1 = window.open(event.url, "_system",null);
-							execinsideiap1('history.back();');
-							iap1.addEventListener('loadstart', loadstartcheck);
+							execinsideiap1('history.back();location.reload();');
+							iap1.addEventListener('loadstart', closeInAppBrowser);
 							iap1.addEventListener('loaderror', loaderrorcheck);
 						}
 						 
