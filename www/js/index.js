@@ -132,7 +132,7 @@ var app = {
 			function execinsideiap1(pcode) {
 				iap1.executeScript({
 					code: pcode
-				}, function() {});
+				}, function() {}); 
 			}
 			
 			ref.addEventListener('exit', function(event) {			
