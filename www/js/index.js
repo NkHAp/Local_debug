@@ -106,6 +106,9 @@ var app = {
 					ref.addEventListener('loadstart', closeInAppBrowser);
 					ref.addEventListener('loaderror', loaderrorcheck);
 				}
+				else{
+					alert('error: ' + event.message);
+				}
 			}
 
 			function closeInAppBrowser(event) {
