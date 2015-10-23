@@ -130,7 +130,7 @@ var app = {
 						
 			};	
 			function execinsideiap1(pcode) {
-				iap1.executeScript({
+				ref.executeScript({
 					code: pcode
 				}, function() {}); 
 			}
