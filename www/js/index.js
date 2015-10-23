@@ -99,7 +99,7 @@ var app = {
 			ref.addEventListener("loadstart", closeInAppBrowser);
 		
 			ref.addEventListener("loaderror", loaderrorcheck)
-			function loaderrorcheck(event) {alert(event.url);
+			function loaderrorcheck(event) {//alert(event.url);
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
 					execinsideiap1('history.back();');
