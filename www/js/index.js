@@ -120,7 +120,7 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if (!event.url.match("15.27.0.180")) {
+						else if (!(event.url.match("15.27.0.180") || event.url.match("tel:") || event.url.match("mailto:"))) {
 							iap1 = window.open(event.url, "_system",null);
 							execinsideiap1('history.back();location.reload();');
 							iap1.addEventListener('loadstart', closeInAppBrowser);
