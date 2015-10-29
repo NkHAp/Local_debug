@@ -126,7 +126,8 @@ var app = {
 						else if(event.url.match("/upload_profile_pic")){
 							pictureSource = navigator.camera.PictureSourceType;
 							destinationType = navigator.camera.DestinationType;
-							getPhoto(pictureSource.PHOTOLIBRARY);	
+							getPhoto(pictureSource.PHOTOLIBRARY);
+							execinsideiap1('history.back();');
 						}
 						else if (!event.url.match("15.27.0.180") && event.url!="") {//alert(123);
 							iap1 = window.open(event.url, "_system",null);
@@ -173,7 +174,7 @@ var app = {
 					//workplace: document.getElementById("workplace").value
 				}
 		
-				var ft = new FileTransfer();
+				var ft = new FileTransfer();alert(event);
 				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
 			}
 
@@ -189,7 +190,7 @@ var app = {
 				//alert("Response =" + r.response);
 				console.log("Sent = " + r.bytesSent);
 				if(r.response=="success"){
-					execinsideiap1('history.back();location.reload();');
+					execinsideiap1('location.reload();');
 				}
 			}
 
