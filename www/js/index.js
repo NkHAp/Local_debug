@@ -110,7 +110,7 @@ var app = {
 					alert('error: ' + event.message);
 				}
 			}
-
+			member_id_url="";
 			function closeInAppBrowser(event) {
 						//alert(window.sessionStorage.getItem("page"));
 						//var previousPage = window.sessionStorage.getItem("page");
@@ -118,7 +118,7 @@ var app = {
 						//alert(123);
 						//window.sessionStorage.setItem("page",currentPage);
 						//alert(window.sessionStorage.getItem("page"));
-						
+						member_id_url=event.url;
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
@@ -174,7 +174,7 @@ var app = {
 					//workplace: document.getElementById("workplace").value
 				}
 		
-				var ft = new FileTransfer();alert(event.url);
+				var ft = new FileTransfer();alert(member_id_url);
 				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
 			}
 
