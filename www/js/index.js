@@ -118,12 +118,15 @@ var app = {
 						//alert(123);
 						//window.sessionStorage.setItem("page",currentPage);
 						//alert(window.sessionStorage.getItem("page"));
-						member_id_url=event.url;
+						
 						if (event.url.match("/closeapp")) {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
 						else if(event.url.match("/upload_profile_pic")){
+							member_id_url=event.url;
+							member_id_url=member_id_url.split("/");
+							member_id_url=member_id_url['2'];
 							pictureSource = navigator.camera.PictureSourceType;
 							destinationType = navigator.camera.DestinationType;
 							getPhoto(pictureSource.PHOTOLIBRARY);
@@ -175,7 +178,7 @@ var app = {
 				}
 		
 				var ft = new FileTransfer();alert(member_id_url);
-				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
+				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"+member_id_url), win, fail, options);
 			}
 
 			// Called if something bad happens.
