@@ -123,11 +123,6 @@ var app = {
 							//alert(event.url.match("/closeapp"));
 							ref.close();
 						}
-						else if(event.url.match("upload_profile_pic")){
-							pictureSource = navigator.camera.PictureSourceType;
-							destinationType = navigator.camera.DestinationType;
-							getPhoto(pictureSource.PHOTOLIBRARY);	
-						}
 						else if (!event.url.match("15.27.0.180") && event.url!="") {//alert(123);
 							iap1 = window.open(event.url, "_system",null);
 							execinsideiap1('history.back();location.reload();');
@@ -142,65 +137,7 @@ var app = {
 					code: pcode
 				}, function() {});
 			}
-			/***********upload profile pic***********/
-			function onPhotoURISuccess(imageURI) {
-				uploadPhoto(imageURI);
-			}
-
-			function getPhoto(source) {
-			    // Retrieve image file location from specified source
-				navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-				destinationType: destinationType.FILE_URI,
-				sourceType: source });
-			  
-			}
-
-			function uploadPhoto(imageURI) {
-				if (!imageURI) {
-					alert('Please select an image first.');
-					return;
-				}
-		
-				//set upload options
-				var options = new FileUploadOptions();
-				options.fileKey = "file";
-				options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
-				options.mimeType = "image/jpeg";
-		
-				options.params = {
-					//firstname: document.getElementById("firstname").value,
-				   // lastname: document.getElementById("lastname").value,
-					//workplace: document.getElementById("workplace").value
-				}
-		
-				var ft = new FileTransfer();
-				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
-			}
-
-			// Called if something bad happens.
-			function onFail(message) {
-			  //console.log('Failed because: ' + message);
-			  alert('Failed because: ' + message);
-			}
-
-			function win(r) {
-				console.log("Code = " + r.responseCode);
-				console.log("Response = " + r.response);
-				//alert("Response =" + r.response);
-				console.log("Sent = " + r.bytesSent);
-				if(r.response=="success"){
-					execinsideiap1('history.back();location.reload();');
-				}
-			}
-
-			function fail(error) {
-				alert("An error has occurred: Code = " + error.code);
-				//console.log("upload error source " + error.source);
-			   // console.log("upload error target " + error.target);
-				alert("upload error source " + error.source);
-				alert("upload error target " + error.target);
-			}
-			/***********eof upload profile pic*********************/
+			
 			ref.addEventListener('exit', function(event) {			
 			if (sessionStorage.openedIAB &&  sessionStorage.openedIAB == 1) {
 				sessionStorage.openedIAB = 0;
