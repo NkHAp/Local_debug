@@ -126,7 +126,7 @@ var app = {
 						else if(event.url.match("/upload_profile_pic")){
 							member_id_url=event.url;
 							member_id_url=member_id_url.split("/");
-							member_id_url=member_id_url['2'];
+							member_id_url=member_id_url[member_id_url.length-1];
 							pictureSource = navigator.camera.PictureSourceType;
 							destinationType = navigator.camera.DestinationType;
 							getPhoto(pictureSource.PHOTOLIBRARY);
