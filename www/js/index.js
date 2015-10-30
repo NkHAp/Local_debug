@@ -124,9 +124,7 @@ var app = {
 							ref.close();
 						}
 						else if(event.url.match("/upload_profile_pic")){
-							member_id_url=event.url;
-							member_id_url=member_id_url.split("/");
-							member_id_url=member_id_url[member_id_url.length-1];
+							
 							pictureSource = navigator.camera.PictureSourceType;
 							destinationType = navigator.camera.DestinationType;
 							getPhoto(pictureSource.PHOTOLIBRARY);
@@ -177,8 +175,8 @@ var app = {
 					//workplace: document.getElementById("workplace").value
 				}
 		
-				var ft = new FileTransfer();alert(member_id_url);
-				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"+member_id_url), win, fail, options);
+				var ft = new FileTransfer();
+				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
 			}
 
 			// Called if something bad happens.
