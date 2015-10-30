@@ -174,7 +174,6 @@ var app = {
 				   // lastname: document.getElementById("lastname").value,
 					//workplace: document.getElementById("workplace").value
 				}
-		
 				var ft = new FileTransfer();
 				ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic/"), win, fail, options);
 			}
