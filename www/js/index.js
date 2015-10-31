@@ -81,12 +81,13 @@ var app = {
 			
 			//alert(udid);
 			
-			var baseUrl = "http://15.27.0.180/cr/z0602/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;;	
+			var baseUrl = "http://15.27.0.180/cr/z0602/";
+			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
-			var ref = cordova.InAppBrowser.open(baseUrl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
-			var img = document.createElement("img");
+			var ref = cordova.InAppBrowser.open(baseUrl+url, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+
 			   
 			ref.addEventListener("loadstop", function() {
 				ref.show();
@@ -213,6 +214,21 @@ var app = {
         push.on('notification', function(data) {
         	console.log("notification event");
             console.log(JSON.stringify(data));
+			var baseUrl = "http://15.27.0.180/cr/z0602/";
+			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
+			if (data.additionalData.allegato) {
+				console.log("URL: " + data.additionalData.allegato);
+				document.location.href = data.additionalData.allegato;
+				var ref = cordova.InAppBrowser.open(baseUrl+url+data.additionalData.allegato, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+
+			   
+				ref.addEventListener("loadstop", function() {
+					ref.show();
+						//alert("loading stop");
+						 //navigator.notification.activityStop();				
+					
+				}); 
+			}
             //alert(data.message);
         });
 
