@@ -103,6 +103,7 @@ var app = {
 			function loaderrorcheck(event) {//alert(event.url);
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
+					execinsideiap1('history.back();');
 					//execinsideiap1('history.back();location.reload();');
 					//ref.addEventListener('loadstart', closeInAppBrowser);
 					//ref.addEventListener('loaderror', loaderrorcheck);
@@ -214,6 +215,7 @@ var app = {
         push.on('notification', function(data) {
         	console.log("notification event");
             console.log(JSON.stringify(data));
+			alert(data);
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
 			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			if (data.additionalData.allegato) {
