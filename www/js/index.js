@@ -224,6 +224,7 @@ var app = {
 			var regID = "";
 			window.plugins.uniqueDeviceID.get(success, fail);
 			var udid;
+			var allegatourl = data.additionalData.allegato;
 			function success(uuid)
 			{
 				//alert(uuid);
@@ -247,7 +248,7 @@ var app = {
 				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
 				alert(param_url);
 				console.log("URL: " + data.additionalData.allegato);				
-				var jumptourl = baseUrl+param_url+data.additionalData.allegato;
+				var jumptourl = baseUrl+param_url+allegatourl;
 				alert("Jumpto url:"+jumptourl);
 				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 				alert("jumped");
