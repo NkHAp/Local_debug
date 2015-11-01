@@ -248,11 +248,11 @@ var app = {
 				alert(param_url);
 				console.log("URL: " + data.additionalData.allegato);				
 				var jumptourl = baseUrl+param_url+data.additionalData.allegato;
-				alert(jumptourl);
+				alert("Jumpto url:"+jumptourl);
 				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
-
+				alert("jumped");
 				   
-					ref.addEventListener("loadstop", function() {
+				ref.addEventListener("loadstop", function() {
 						ref.show();
 							//alert("loading stop");
 							 //navigator.notification.activityStop();				
