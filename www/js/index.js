@@ -217,7 +217,7 @@ var app = {
             console.log(JSON.stringify(data));
 			alert(JSON.stringify(data));
 			alert(JSON.stringify(data.additionalData));
-			alert(data.additionalData);
+			alert(data.additionalData.allegato);
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
 			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			if (data.additionalData.allegato) {
