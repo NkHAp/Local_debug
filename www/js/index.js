@@ -242,12 +242,10 @@ var app = {
             "windows": {} 
 			});
 			push.on('registration', function(data) {
-				 var regID = data.registrationId;
-				//alert("length"+ regID.length);
-				console.log(JSON.stringify(data));
+				 var regID = data.registrationId;			
 				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
-				alert(param_url);
-				console.log("URL: " + data.additionalData.allegato);				
+				alert(param_url);					
+				alert(allegatourl);				
 				var jumptourl = baseUrl+param_url+allegatourl;
 				alert("Jumpto url:"+jumptourl);
 				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
