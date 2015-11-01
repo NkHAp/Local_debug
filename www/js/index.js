@@ -223,7 +223,9 @@ var app = {
 			if (data.additionalData.allegato) {
 				console.log("URL: " + data.additionalData.allegato);
 				document.location.href = data.additionalData.allegato;
-				var ref = cordova.InAppBrowser.open(baseUrl+url+data.additionalData.allegato, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+				var jumptourl = encodeURIComponent(baseUrl+url+data.additionalData.allegato);
+				alert(jumptourl);
+				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 
 			   
 				ref.addEventListener("loadstop", function() {
