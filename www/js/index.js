@@ -258,7 +258,7 @@ var app = {
 							 //navigator.notification.activityStop();				
 						
 				}); 
-			}
+			});
 			
 			
             //alert(data.message);
