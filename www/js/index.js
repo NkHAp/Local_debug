@@ -217,9 +217,9 @@ var app = {
             console.log(JSON.stringify(data));
 			//alert(JSON.stringify(data));
 			//alert(JSON.stringify(data.additionalData));
-			alert(data.additionalData.allegato);
+			//alert(data.additionalData.allegato);
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
-			alert(baseUrl);
+			//alert(baseUrl);
 			var app_version="1.2.0";
 			var regID = "";
 			window.plugins.uniqueDeviceID.get(success, fail);
@@ -244,13 +244,11 @@ var app = {
 			push.on('registration', function(data) {
 				 var regID = data.registrationId;			
 				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
-				alert(param_url);					
-				alert(allegatourl);				
-				var jumptourl = baseUrl+param_url+allegatourl;
-				alert("Jumpto url:"+jumptourl);
+							
+				var jumptourl = encodeURIComponent(baseUrl+param_url+allegatourl);
+			
 				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
-				alert("jumped");
-				   
+							   
 				ref.addEventListener("loadstop", function() {
 						ref.show();
 							//alert("loading stop");
