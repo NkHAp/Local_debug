@@ -103,7 +103,7 @@ var app = {
 			function loaderrorcheck(event) {//alert(event.url);
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
-					execinsideiap1('history.back();location.reload();');
+					//execinsideiap1('history.back();location.reload();');
 					//ref.addEventListener('loadstart', closeInAppBrowser);
 					//ref.addEventListener('loaderror', loaderrorcheck);
 				}
