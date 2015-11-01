@@ -222,20 +222,44 @@ var app = {
 			alert(baseUrl);
 			var app_version="1.2.0";
 			var regID = "";
-			var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
-			alert(param_url);
-			console.log("URL: " + data.additionalData.allegato);				
-			var jumptourl = baseUrl+param_url+data.additionalData.allegato;
-			alert(jumptourl);
-			var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+			window.plugins.uniqueDeviceID.get(success, fail);
+			var udid;
+			function success(uuid)
+			{
+				//alert(uuid);
+				udid = uuid;
+			};
+			function fail()
+			{
+				alert("fail");
+			};	
+			var push = PushNotification.init({
+            "android": {
+                "senderID": "530296063218"
+            },
+            "ios": {}, 
+            "windows": {} 
+			});
+			push.on('registration', function(data) {
+				 var regID = data.registrationId;
+				//alert("length"+ regID.length);
+				console.log(JSON.stringify(data));
+				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
+				alert(param_url);
+				console.log("URL: " + data.additionalData.allegato);				
+				var jumptourl = baseUrl+param_url+data.additionalData.allegato;
+				alert(jumptourl);
+				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 
-			   
-				ref.addEventListener("loadstop", function() {
-					ref.show();
-						//alert("loading stop");
-						 //navigator.notification.activityStop();				
-					
-			}); 
+				   
+					ref.addEventListener("loadstop", function() {
+						ref.show();
+							//alert("loading stop");
+							 //navigator.notification.activityStop();				
+						
+				}); 
+			}
+			
 			
             //alert(data.message);
         });
