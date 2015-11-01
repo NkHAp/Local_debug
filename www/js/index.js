@@ -215,15 +215,17 @@ var app = {
         push.on('notification', function(data) {
         	console.log("notification event");
             console.log(JSON.stringify(data));
-			alert(JSON.stringify(data));
-			alert(JSON.stringify(data.additionalData));
+			//alert(JSON.stringify(data));
+			//alert(JSON.stringify(data.additionalData));
 			alert(data.additionalData.allegato);
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
-			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";			
-				console.log("URL: " + data.additionalData.allegato);				
-				var jumptourl = encodeURIComponent(baseUrl+url+data.additionalData.allegato);
-				alert(jumptourl);
-				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+			alert(baseUrl);
+			var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
+			alert(param_url);
+			console.log("URL: " + data.additionalData.allegato);				
+			var jumptourl = baseUrl+param_url+data.additionalData.allegato;
+			alert(jumptourl);
+			var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 
 			   
 				ref.addEventListener("loadstop", function() {
@@ -231,7 +233,7 @@ var app = {
 						//alert("loading stop");
 						 //navigator.notification.activityStop();				
 					
-				}); 
+			}); 
 			
             //alert(data.message);
         });
