@@ -108,7 +108,7 @@ var app = {
 					//ref.addEventListener('loaderror', loaderrorcheck);
 				}
 				else{
-					alert('error: ' + event.message);
+					//alert('error: ' + event.message);
 				}
 			}
 			member_id_url="";
