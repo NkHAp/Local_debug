@@ -245,9 +245,9 @@ var app = {
 				 var regID = data.registrationId;			
 				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
 							
-				var jumptourl = encodeURIComponent(baseUrl+param_url+allegatourl);
+				var jumptourl = baseUrl+param_url+allegatourl;
 			
-				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+				var ref = cordova.InAppBrowser.open(encodeURI(jumptourl), '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 							   
 				ref.addEventListener("loadstop", function() {
 						ref.show();
