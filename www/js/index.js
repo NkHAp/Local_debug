@@ -220,6 +220,8 @@ var app = {
 			alert(data.additionalData.allegato);
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
 			alert(baseUrl);
+			var app_version="1.2.0";
+			var regID = "";
 			var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
 			alert(param_url);
 			console.log("URL: " + data.additionalData.allegato);				
