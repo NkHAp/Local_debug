@@ -86,7 +86,13 @@ var app = {
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
 			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
-			var ref = cordova.InAppBrowser.open(baseUrl+url, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+			var ref;
+			setTimeout(function(){ 
+				ref = cordova.InAppBrowser.open(baseUrl+url, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes'); 
+				}, 5000);
+			
+			
+			
 
 			   
 			ref.addEventListener("loadstop", function() {
@@ -224,7 +230,7 @@ var app = {
 			var regID = "";
 			window.plugins.uniqueDeviceID.get(success, fail);
 			var udid;
-			var allegatourl = data.additionalData.allegato;
+			var allegatourl = encodeURIComponent(data.additionalData.allegato);
 			function success(uuid)
 			{
 				//alert(uuid);
@@ -246,8 +252,9 @@ var app = {
 				var param_url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";		
 							
 				var jumptourl = baseUrl+param_url+allegatourl;
+				
 			
-				var ref = cordova.InAppBrowser.open(encodeURI(jumptourl), '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
+				var ref = cordova.InAppBrowser.open(jumptourl, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 							   
 				ref.addEventListener("loadstop", function() {
 						ref.show();
