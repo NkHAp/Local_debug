@@ -85,15 +85,9 @@ var app = {
 			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
 			//alert("URL: " + baseUrl);
-			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";
-			var ref;
-			setTimeout(function(){ 
-				ref = cordova.InAppBrowser.open(baseUrl+url, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes'); 
-				}, 5000);
-			
-			
-			
-
+			//var baseUrl = "http://15.27.0.180/wrk/take_care/edit/affinity_rewards.html";			
+				
+			var ref = cordova.InAppBrowser.open(baseUrl+url, '_blank', 'location=no,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes');
 			   
 			ref.addEventListener("loadstop", function() {
 				ref.show();
