@@ -103,9 +103,9 @@ var app = {
 			function loaderrorcheck(event) {//alert(event.url);
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
-					setTimeout(function(){execcssinsideiap1('body{display:none;}');},500);
+					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
 					execinsideiap1('history.back();');
-					setTimeout(function(){execcssinsideiap1('body{display:none;}');},500);
+					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
 					setTimeout(function(){execinsideiap1('location.reload(true);');},500);
 					//execinsideiap1('history.back();');
 					//setTimeout(function(){execinsideiap1('location.reload();');},100);
