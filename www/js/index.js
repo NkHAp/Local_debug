@@ -106,7 +106,7 @@ var app = {
 					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
 					execinsideiap1('history.back();');
 					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
-					setTimeout(function(){execinsideiap1('location.reload();');},100);
+					setTimeout(function(){execinsideiap1('location.reload(true);');},100);
 					//execinsideiap1('history.back();');
 					//setTimeout(function(){execinsideiap1('location.reload();');},100);
 					//execinsideiap1('history.back();location.reload();');
