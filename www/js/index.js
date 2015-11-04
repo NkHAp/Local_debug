@@ -103,8 +103,12 @@ var app = {
 			function loaderrorcheck(event) {//alert(event.url);
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
+					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
 					execinsideiap1('history.back();');
+					setTimeout(function(){execcssinsideiap1('body{display:none;}');},100);
 					setTimeout(function(){execinsideiap1('location.reload();');},100);
+					//execinsideiap1('history.back();');
+					//setTimeout(function(){execinsideiap1('location.reload();');},100);
 					//execinsideiap1('history.back();location.reload();');
 					//ref.addEventListener('loadstart', closeInAppBrowser);
 					//ref.addEventListener('loaderror', loaderrorcheck);
@@ -146,6 +150,12 @@ var app = {
 				ref.executeScript({
 					code: pcode
 				}, function() {});
+			}
+			function execcssinsideiap1(pcode) {
+				ref.insertCSS({
+					code: pcode
+				}, function(
+				) {});
 			}
 			/***********upload profile pic***********/
 			function onPhotoURISuccess(imageURI) {
