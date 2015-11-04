@@ -104,6 +104,7 @@ var app = {
 				if(event.url.match("tel:") || event.url.match("mailto:"))
 				{	
 					execinsideiap1('history.back();');
+					setTimeout(function(){execinsideiap1('location.reload();location.reload();');},2000);
 					//execinsideiap1('history.back();location.reload();');
 					//ref.addEventListener('loadstart', closeInAppBrowser);
 					//ref.addEventListener('loaderror', loaderrorcheck);
