@@ -135,7 +135,7 @@ var app = {
 							var pic_url=event.url;
 							pic_url=pic_url.split('/');
 							member_id = pic_url[pic_url.length-1];
-							if(1 || device.platform=="iOS"){
+							if(device.platform=="iOS"){
 								ref.close();
 								getPhoto();
 							}
@@ -158,7 +158,7 @@ var app = {
     }
 
     function getPhoto() {
-	  
+	  alert("in get photo");
 	  navigator.camera.getPicture(onPhotoURISuccess, onFail, {
         quality: 30,
         targetWidth: 600,
