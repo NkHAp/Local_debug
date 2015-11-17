@@ -139,7 +139,8 @@ var app = {
 								ref.close();
 								getPhoto();
 							}
-							else{alert("in else");
+							else{
+								//alert("in else");
 								getPhoto();
 							}
 							
@@ -164,7 +165,7 @@ var app = {
         targetWidth: 600,
         targetHeight: 600,
         destinationType: navigator.camera.DestinationType.DATA_URL,
-       sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
     });
 						 
     }
