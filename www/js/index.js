@@ -161,7 +161,7 @@ var app = {
     function getPhoto() {
 	  
 	  navigator.camera.getPicture(onPhotoURISuccess, onFail, {
-        quality: 30,
+        quality: 50,
         targetWidth: 600,
         targetHeight: 600,
         destinationType: navigator.camera.DestinationType.DATA_URL,
@@ -233,12 +233,12 @@ var app = {
 			}
     }
 	function reopenIAB(){
-		var iap1 = cordova.InAppBrowser.open('http://15.27.0.180/cr/z0602/?device=iPhone&device_id=12345&device_version=8.1&device_os=Windows&device_notification_id=sf2df13sd2f1sdf&app_version=1.2.0&jump_to=front_users/tc_card', '_blank', 'location=yes,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes,clearcache=yes, clearsessioncache=yes');
-		iap1.addEventListener("loadstop", function() {
-				iap1.show();
+		var ref = cordova.InAppBrowser.open('http://15.27.0.180/cr/z0602/?device=iPhone&device_id=12345&device_version=8.1&device_os=Windows&device_notification_id=sf2df13sd2f1sdf&app_version=1.2.0&jump_to=front_users/tc_card', '_blank', 'location=yes,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes,clearcache=yes, clearsessioncache=yes');
+		ref.addEventListener("loadstop", function() {
+				ref.show();
 		});
-		iap1.addEventListener("loadstart", closeInAppBrowser);
-		iap1.addEventListener("loaderror", loaderrorcheck);
+		ref.addEventListener("loadstart", closeInAppBrowser);
+		ref.addEventListener("loaderror", loaderrorcheck);
 	}
 			function execinsideiap1(pcode) {
 				ref.executeScript({
