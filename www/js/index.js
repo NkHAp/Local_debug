@@ -159,7 +159,7 @@ var app = {
     }
 
     function getPhoto() {
-	  alert("in get photo");
+	  
 	  navigator.camera.getPicture(onPhotoURISuccess, onFail, {
         quality: 30,
         targetWidth: 600,
@@ -190,6 +190,7 @@ var app = {
         var ft = new FileTransfer();
         //ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic"), win, fail, options);
 		var data;
+		alert("test ajax"+member_id);
 		data={file:imageURI,member_id:member_id};
 		$.ajax({
 			type       : "POST",
