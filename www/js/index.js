@@ -80,7 +80,7 @@ var app = {
 			var app_version="1.2.0";
 			
 			//alert(udid);
-			
+			member_id='';
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
 			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
@@ -131,11 +131,17 @@ var app = {
 							ref.close();
 						}
 						else if(event.url.match("/upload_profile_pic")){
+							var pic_url=event.url;
+							pic_url=pic_url.split('/');
+							member_id = pic_url[pic_url.length-1];
+							if(device.platform=="iOS"){
+								ref.close();
+								getPhoto();
+							}
+							else{alert("in else");
+								getPhoto();
+							}
 							
-							pictureSource = navigator.camera.PictureSourceType;
-							destinationType = navigator.camera.DestinationType;
-							getPhoto(pictureSource.PHOTOLIBRARY);
-							execinsideiap1('history.back();');
 						}
 						else if (!event.url.match("15.27.0.180") && event.url!="") {//alert(123);
 							iap1 = window.open(event.url, "_system",null);
@@ -146,6 +152,92 @@ var app = {
 						 
 						
 			};	
+	function onPhotoURISuccess(imageURI) {
+       uploadPhoto(imageURI);
+    }
+
+    function getPhoto() {
+	  
+	  navigator.camera.getPicture(onPhotoURISuccess, onFail, {
+        quality: 30,
+        targetWidth: 600,
+        targetHeight: 600,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
+       sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+    });
+						 
+    }
+
+    function uploadPhoto(imageURI) {
+
+        if (!imageURI) {
+            alert('Please select an image first.');
+            return;
+        }
+
+        //set upload options
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType = "image/jpeg";
+
+        options.params = {
+            
+        }
+		//alert(imageURI);
+        var ft = new FileTransfer();
+        //ft.upload(imageURI, encodeURI("http://15.27.0.180/cr/z0602/front_users/upload_profile_pic"), win, fail, options);
+		var data;
+		data={file:imageURI,member_id:member_id};
+		$.ajax({
+			type       : "POST",
+			url        : 'http://15.27.0.180/cr/z0602/front_users/upload_profile_pic',
+			crossDomain: true,
+			data: data,
+			contentType:"application/x-www-form-urlencoded",
+			success    : win,
+			error      : fail
+    	});		
+    }
+
+    // Called if something bad happens.
+    function onFail(message) {
+	  alert('Failed because: ' + message);
+    }
+
+    function win(r) {
+        
+		if(device.platform=="iOS"){
+			reopenIAB();	
+		}
+		else{
+			execinsideiap1('history.back();');
+			setTimeout(function(){execinsideiap1('location.reload(true);');},500);
+		}
+		
+    }
+
+    function fail(error) {
+        alert("An error has occurred: Code = " + error.code);
+		alert("upload error source " + error.source);
+        alert("upload error target " + error.target);
+			if(device.platform=="iOS"){
+				reopenIAB();	
+			}
+			else{
+				execinsideiap1('history.back();');
+				setTimeout(function(){execinsideiap1('location.reload(true);');},500);
+			}
+    }
+	function reopenIAB(){
+		var iap1 = cordova.InAppBrowser.open('http://15.27.0.180/cr/z0602/?device=iPhone&device_id=12345&device_version=8.1&device_os=Windows&device_notification_id=sf2df13sd2f1sdf&app_version=1.2.0&jump_to=front_users/tc_card', '_blank', 'location=yes,hidden=yes,zoom=no,toolbar=no,suppressesIncrementalRendering=yes,disallowoverscroll=yes,clearcache=yes, clearsessioncache=yes');
+		iap1.addEventListener("loadstop", function() {
+				iap1.show();
+		});
+		iap1.addEventListener("loadstart", loadstartcheck);
+		iap1.addEventListener("loadstop", loadstopcheck);
+		iap1.addEventListener("loaderror", loaderrorcheck);
+	}
 			function execinsideiap1(pcode) {
 				ref.executeScript({
 					code: pcode
