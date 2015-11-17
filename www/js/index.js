@@ -81,6 +81,7 @@ var app = {
 			
 			//alert(udid);
 			member_id='';
+			imageURI="";
 			var baseUrl = "http://15.27.0.180/cr/z0602/";
 			var url = "?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version+"&jump_to=";
 			//var baseUrl = "http://202.151.76.196/dev1/?device="+device.model+"&device_id="+udid+"&device_version="+device.version+"&device_os="+device.platform+"&device_notification_id="+regID+"&app_version="+app_version;//+"#no-back-button";	
@@ -134,7 +135,7 @@ var app = {
 							var pic_url=event.url;
 							pic_url=pic_url.split('/');
 							member_id = pic_url[pic_url.length-1];
-							if(device.platform=="iOS"){
+							if(1 || device.platform=="iOS"){
 								ref.close();
 								getPhoto();
 							}
